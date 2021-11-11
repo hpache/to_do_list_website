@@ -1,4 +1,4 @@
-from app import index
+import app
 import requests
 
 def test_index():
