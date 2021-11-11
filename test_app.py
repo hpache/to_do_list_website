@@ -1,5 +1,9 @@
 from app import index
+import requests
 
 def test_index():
     
-    assert index() == "hello World"
+    # more intreesting way to test the the page works
+	client = app.test_client()
+	response = client.get("/about")
+	assert response.status_code == 200  # success
