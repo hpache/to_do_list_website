@@ -1,0 +1,72 @@
+<!-- Layout for the to-do list -->
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <title> A Simple To-Do List </title>
+
+    <style>
+
+        header {
+            font-size: 26pt;
+            color: blue;
+            text-align: center;
+        }
+
+        .right {
+            float: right;
+        }
+
+        .left {
+            float: left;
+        }
+
+        .center {
+            float: center;
+        }
+
+    </style>
+
+</head>
+
+<header>
+
+    <p>
+
+        <span class = "left" id = "date"> Date </span>
+
+        <script>
+            n = new Date();
+            y = n.getFullYear();
+            m = n.getMonth() + 1;
+            d = n.getDate();
+            document.getElementById("date").innerHTML = m + "/" + d + "/" + y;
+        </script>
+
+        <span class = "center"> <b> A Simple To-Do List </b></span>
+
+        <span class = "right" id = "time"> Time </span>
+
+        <script>
+            timer();
+
+            function timer() {
+                n = new Date();
+                time = n.toLocaleTimeString();
+                document.getElementById("time").innerHTML = time;
+
+                setTimeout(timer,1000);
+            }
+        </script>
+
+
+    </p>    
+    
+    
+</header>
+
+
+</html>
