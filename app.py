@@ -3,7 +3,7 @@ import psycopg2
 import os
 
 app = Flask(__name__)
-DATABASE_URL = os.environ['DATABASE_URL']
+DATABASE_URL = os.environ['postgres://thdubczkubqtdu:11b1f97cf5af521451340de904ba9ce1a6d4ae1d1b04bb6fc0026a0a779d1b77@ec2-54-160-103-135.compute-1.amazonaws.com:5432/d50g0qitf4h4pp']
 conn = psycopg2.connect(DATABASE_URL, sslmode = 'require')
 
 @app.route("/")
