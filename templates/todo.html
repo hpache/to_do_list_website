@@ -16,6 +16,53 @@
             text-align: center;
         }
 
+        ul li {
+        padding: 12px 8px 12px 40px;
+        list-style-type: none;
+        font-size: 18px;
+        transition: 0.2s;
+        background: rgb(93, 93, 255);
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        }
+
+        .button {
+            border: none;
+            color: white;
+            padding: 2px 2px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 2px 2px;
+            transition-duration: 0.4s;
+            cursor: pointer;
+        }
+
+        .complete {
+            background-color: white; 
+            color: black; 
+            border: 2px solid #07f170;
+        }
+        
+        .complete:hover {
+            background-color: #07f170;
+            color: white;
+        }
+
+        .remove {
+            background-color: white;
+            color: black;
+            border: 2px solid red;
+        }
+
+        .remove:hover {
+            background-color: red;
+            color: white;
+        }
+
         .right {
             float: right;
         }
@@ -67,6 +114,67 @@
     
     
 </header>
+
+<body>
+    <div> 
+        Add a new item: 
+        <form action="/add" method="post">
+            <input type="text" placeholder="Insert Item" name = "todoItem">
+            <input type="text" placeholder="Insert Tag" name = "tag">
+            <select name = "priority">
+                <option value="High"> High </option>
+                <option value="Medium"> Medium </option>
+                <option value="Low"> Low </option>
+            </select>
+            <input type = "submit"> 
+        </form>
+    </div>
+
+    <div>
+        
+        <h1> To-Do List </h1>
+        <ul>
+
+            {% for todo in incomplete %}
+
+            <li id = "todo-list-item">
+
+                    <b> {{todo.item}} </b>
+                
+                <span class = "right">
+                    <form action = "/remove" method="post">
+                        <button name = "remove" value="{{todo.id}}" class = "button remove"> Remove </button>
+                    </form>
+                </span>
+
+                <span class="right">
+                    <form action = "/complete" method = "post">
+                        <button name = "complete" value = "{{todo.id}}" class = "button complete"> Complete </button>
+                    </form>
+                </span>
+
+            </li>
+
+            {% endfor %}
+
+        </form>
+    </div>
+
+    <div>
+        
+        <h2> Completed Items </h2>
+
+        <ul>
+
+            {% for done in complete %}
+
+            <li> {{done.item }} </li>
+
+            {% endfor %}
+
+        </ul>
+    </div>
+</body>
 
 
 </html>
