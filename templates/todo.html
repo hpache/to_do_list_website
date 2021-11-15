@@ -17,7 +17,7 @@
         }
 
         ul li {
-        padding: 12px 8px 12px 40px;
+        padding: 20px 15px 20px 45px;
         list-style-type: none;
         font-size: 18px;
         transition: 0.2s;
@@ -28,6 +28,11 @@
         user-select: none;
         }
 
+        li {
+            display: grid;
+            grid-template-columns: auto auto auto;
+        }
+
         .button {
             border: none;
             color: white;
@@ -35,7 +40,7 @@
             text-align: center;
             text-decoration: none;
             display: inline-block;
-            font-size: 16px;
+            font-size: 11pt;
             margin: 2px 2px;
             transition-duration: 0.4s;
             cursor: pointer;
@@ -139,7 +144,13 @@
 
             <li id = "todo-list-item">
 
-                    <b> {{todo.item}} </b>
+                    {{todo.item}}
+
+                    <b> tag: </b> {{todo.tag}} <b> </b>
+
+                    <b> priority: </b> {{todo.priority}} <b> </b>
+
+                    <b> date: </b> {{todo.date}} <b> </b>
                 
                 <span class = "right">
                     <form action = "/remove" method="post">
@@ -149,7 +160,7 @@
 
                 <span class="right">
                     <form action = "/complete" method = "post">
-                        <button name = "complete" value = "{{todo.id}}" class = "button complete"> Complete </button>
+                        <button name = "complete" value="{{todo.id}}" class = "button complete"> Complete </button>
                     </form>
                 </span>
 
@@ -157,18 +168,34 @@
 
             {% endfor %}
 
-        </form>
+        </ul>
     </div>
 
     <div>
         
-        <h2> Completed Items </h2>
+        <h1> Completed Items </h1>
 
         <ul>
 
             {% for done in complete %}
 
-            <li> {{done.item }} </li>
+            <li> 
+                
+                {{done.item }}
+
+                <span class = "right">
+                    <form action = "/remove" method="post">
+                        <button name = "remove" value="{{done.id}}" class = "button remove"> Remove </button>
+                    </form>
+                </span>
+
+                <span class="right">
+                    <form action = "/incomplete" method = "post">
+                        <button name = "incomplete" value = "{{done.id}}" class = "button complete"> Incomplete </button>
+                    </form>
+                </span>
+                
+            </li>  
 
             {% endfor %}
 
