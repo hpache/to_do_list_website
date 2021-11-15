@@ -38,7 +38,14 @@ def update():
 @app.route("/complete", methods = ["POST"])
 def complete():
     todo = TodoModel.query.filter_by(id = request.form["complete"]).first()
-    todo.completed = True 
+    todo.completed = True
+    db.session.commit()
+    return redirect(url_for("index"))
+
+@app.route("/incomplete", methods = ["POST"])
+def incomplete():
+    todo = TodoModel.query.filter_by(id = request.form["incomplete"]).first()
+    todo.completed = False
     db.session.commit()
     return redirect(url_for("index"))
 
