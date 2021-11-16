@@ -151,6 +151,30 @@
                     <b> priority: </b> {{todo.priority}} <b> </b>
 
                     <b> date: </b> {{todo.date}} <b> </b>
+
+                    <!--Color goes here-->
+                
+                    <!-- .redText {background_color: red; }
+                    .yellowText {background_color: yellow; }
+                    .greenText {background_color: green; } -->
+                
+                <!-- <select
+                        
+                    id = "mySelect" class = "redText">
+                    <option class = "redText" value="High" >High</option>
+                    <option class = "yellowText" value = "Medium" >Medium</option>
+                    <option class = "greenText" value = "Low" >Low</option> -->
+                
+                </select
+
+                    onchange = "this.className = this.options[this.selectedIndex].className"
+                    class = "redText" >
+                    <option class = "redText" value="High" >High</option>
+                    <option class = "yellowText" value = "Medium" >Medium</option>
+                    <option class = "greenText" value = "Low" >Low</option>
+                    </select>
+                
+
                 
                 <span class = "right">
                     <form action = "/remove" method="post">

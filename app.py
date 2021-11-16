@@ -3,6 +3,7 @@ from flask_migrate import Migrate
 from flask_sqlalchemy import SQLAlchemy
 from models import db, TodoModel
 from datetime import date
+import time 
 
 app = Flask(__name__)
 
@@ -22,9 +23,12 @@ def index():
 def add():
     item = request.form["todoItem"]
     currentDate = date.today()
+    #currentTime = time.time()
+    currentTime = time.asctime(time.localtime(time.time()))
+    
     priority = request.form["priority"]
     tag = request.form["tag"]
-    item = TodoModel(item=item, date=currentDate, priority=priority, tag=tag)
+    item = TodoModel(item=item, date = currentTime, priority=priority, tag=tag)
     db.session.add(item)
     db.session.commit()
     return redirect(url_for('index'))
