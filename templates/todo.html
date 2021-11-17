@@ -2,17 +2,19 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
 
 <head>
 
-    <title> A Simple To-Do List </title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+    <title> <u>A Simple To-Do List</u>> </title>
 
     <style>
 
         header {
             font-size: 26pt;
-            color: blue;
+            color: rgb(0, 255, 179);
             text-align: center;
         }
 
@@ -35,7 +37,7 @@
 
         .button {
             border: none;
-            color: white;
+            color: rgb(173, 158, 158);
             padding: 2px 2px;
             text-align: center;
             text-decoration: none;
@@ -47,7 +49,7 @@
         }
 
         .complete {
-            background-color: white; 
+            background-color: rgb(85, 228, 80); 
             color: black; 
             border: 2px solid #07f170;
         }
@@ -58,14 +60,14 @@
         }
 
         .remove {
-            background-color: white;
+            background-color: rgb(226, 32, 32);
             color: black;
             border: 2px solid red;
         }
 
         .remove:hover {
             background-color: red;
-            color: white;
+            color: rgb(253, 252, 252);
         }
 
         .right {
@@ -146,9 +148,18 @@
     </div>
 
     <div>
+
+        <p>
+            A personal to-do list, keeping track of tasks using a priority system of <span style = "color:red">High</span>,
+            <span style = "color:yellow">Medium</span>, and <span style = "color:green">Low</span> priority!
+        </p>
+
+    </div>
+
+    <div>
         
         <h1> To-Do List </h1>
-        <ul>
+        <ul id = "ul">
 
             {% for todo in incomplete %}
 
@@ -158,24 +169,10 @@
 
                     <b> tag: </b> {{todo.tag}} <b> </b>
 
-                    <b> priority: </b> {{todo.priority}} <b> </b>
-
                     <b> date: </b> {{todo.date}} <b> </b>
 
-                    <!--Color goes here-->
                 
-                    <!-- .redText {background_color: red; }
-                    .yellowText {background_color: yellow; }
-                    .greenText {background_color: green; } -->
-                
-                <!-- <select
-                        
-                    id = "mySelect" class = "redText">
-                    <option class = "redText" value="High" >High</option>
-                    <option class = "yellowText" value = "Medium" >Medium</option>
-                    <option class = "greenText" value = "Low" >Low</option> -->
-                
-                </select
+                <select
 
                     onchange = "this.className = this.options[this.selectedIndex].className"
                     class = "redText" >
@@ -234,6 +231,35 @@
             {% endfor %}
 
         </ul>
+
+        <script>
+
+            test();
+
+            function test(){
+
+                var list = document.getElementByID("ul");
+                var listItems = list.getElementByTagName("li");
+
+                for (var i = 0; i < listItems.length; i++) {
+                    item = listItems[i]
+                    priority = item.getElementByTagName("span")[0].innerText;
+
+                    if(priority == "High"){
+                        item.style.background = "red";
+                    }
+
+                    if(priority == "Medium"){
+                        item.style.background = "yellow";
+                    }
+
+                    if(priority == "Low"){
+                        item.style.background = "green";
+                    }
+                }
+            }
+        </script>
+
     </div>
 </body>
 
